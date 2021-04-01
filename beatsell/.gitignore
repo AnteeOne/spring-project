@@ -8,4 +8,4 @@
 *.iml
 *.class
 *.jar
-*.properties
+application.properties
