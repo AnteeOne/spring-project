@@ -139,3 +139,4 @@ buildNumber.properties
 
 # "temporary" build files
 /target
+beatsell/src/main/resources/application.properties
