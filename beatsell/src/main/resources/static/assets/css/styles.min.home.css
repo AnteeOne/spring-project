@@ -1,0 +1,1 @@
+.UpnDown{animation:8s linear infinite MoveUpDown;position:absolute;left:0;bottom:0}@keyframes MoveUpDown{0%,100%{top:-80px}50%{top:10px}}

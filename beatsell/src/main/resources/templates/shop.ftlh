@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - Brand</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin:700">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/styles.min.shop.css">
+</head>
+<body id="page-top">
+<nav class="navbar navbar-light navbar-expand-md fixed-top" id="mainNav">
+    <div class="container"><a class="navbar-brand js-scroll-trigger" href="#">antee</a>
+        <button data-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-target="#navbarResponsive"
+                type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
+                value="Menu"><i class="fa fa-bars"></i></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link" href="#">shop</a></li>
+                <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link" href="#">my beats</a></li>
+                <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link" href="#">chat</a></li>
+                <li class="nav-item nav-link js-scroll-trigger">
+                    <button class="btn btn-primary" type="button">sign out</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<section class="text-center content-section" id="about">
+    <div class="caption v-middle text-center">
+        <h1 class="cd-headline clip">
+            <span class="blc"></span>
+            <span class="cd-words-wrapper">
+			              <b class="is-visible">Beats</b>
+			              <b>Shop</b>
+			              <b>For You</b>
+			            </span>
+        </h1>
+    </div>
+    <div class="container">
+        <div class="list-group"><a class="list-group-item list-group-item-action flex-column align-items-start" href="#"
+                                   style="margin-top: 2%;">
+                <div class="d-flex w-100 justify-content-between"><h5 class="mb-1">title</h5><small>140 bpm</small>
+                </div>
+                <small class="text-muted">TAGS</small>
+                <div style="margin-top: 2%;"></div>
+                <div style="margin-top: 2%;">
+                    <button class="btn btn-primary" type="button">Book</button>
+                </div>
+            </a><a class="list-group-item list-group-item-action flex-column align-items-start" href="#"
+                   style="margin-top: 2%;">
+                <div class="d-flex w-100 justify-content-between"><h5 class="mb-1">title</h5><small>140 bpm</small>
+                </div>
+                <small class="text-muted">TAGS</small>
+                <div style="margin-top: 2%;"></div>
+                <div style="margin-top: 2%;">
+                    <button class="btn btn-primary" type="button">Book</button>
+                </div>
+            </a></div>
+    </div>
+</section>
+<section class="text-center content-section" id="contact"></section>
+<div class="map-clean"></div>
+<footer>
+    <div class="container text-center">
+        <ul class="list-inline banner-social-buttons">
+            <li class="list-inline-item">&nbsp;<button class="btn btn-primary btn-lg btn-default" type="button"><i
+                            class="fa fa-google-plus fa-fw"></i></button>
+            </li>
+            <li class="list-inline-item">&nbsp;<button class="btn btn-primary btn-lg btn-default" type="button"><i
+                            class="fa fa-twitter fa-fw"></i></button>
+            </li>
+            <li class="list-inline-item">&nbsp;<button class="btn btn-primary btn-lg btn-default" type="button"><i
+                            class="fa fa-github fa-fw"></i></button>
+            </li>
+        </ul>
+        <p>Copyright ©&nbsp;Brand 2021</p></div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<script src="assets/js/script.min.shop.js"></script>
+</body>
+</html>

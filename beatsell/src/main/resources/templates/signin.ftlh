@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Untitled</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/styles.min.auth.css">
+</head>
+<body>
+<section class="login-dark">
+    <form method="post"><h2 class="sr-only">Login Form</h2>
+        <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
+        <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email"></div>
+        <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary btn-block" type="submit">Log In</button>
+        </div>
+        <#if Session?? && Session.SPRING_SECURITY_LAST_EXCEPTION??>
+            <div class="alert alert-danger" role="alert">
+                ${Session.SPRING_SECURITY_LAST_EXCEPTION.message}
+            </div>
+        </#if>
+        <a class="forgot" href="#">Don't have an account?</a></form>
+</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
