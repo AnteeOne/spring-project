@@ -23,7 +23,7 @@
                 ${Session.SPRING_SECURITY_LAST_EXCEPTION.message}
             </div>
         </#if>
-        <a class="forgot" href="#">Don't have an account?</a></form>
+        <a class="forgot" href="/signup">Don't have an account?</a></form>
 </section>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>

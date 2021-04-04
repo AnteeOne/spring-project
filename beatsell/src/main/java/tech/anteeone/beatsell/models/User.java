@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Builder
@@ -28,6 +29,17 @@ public class User {
     @Enumerated(value = EnumType.STRING)
     private State state;
 
+    @ManyToMany
+    @JoinTable(
+            name = "user_booked_beats",
+            joinColumns = {
+                    @JoinColumn(name = "user_id", referencedColumnName = "id")
+            },
+            inverseJoinColumns = {
+                    @JoinColumn(name = "beat_id", referencedColumnName = "id")
+            }
+    )
+    private List<Beat> bookedBeats;
 
     public enum Role {
         USER, ADMIN
@@ -49,7 +61,5 @@ public class User {
     public boolean isAdmin() {
         return this.role == Role.ADMIN;
     }
-
-
 
 }

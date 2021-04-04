@@ -46,7 +46,7 @@
         <div class="form-group">
             <button class="btn btn-primary btn-block" type="submit">Register</button>
         </div>
-        <a class="forgot" href="#">Already have an account?</a></form>
+        <a class="forgot" href="/signin">Already have an account?</a></form>
 </section>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
