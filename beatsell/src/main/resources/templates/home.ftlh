@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<#import "macro/ui.ftlh" as ui/>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -11,23 +12,7 @@
     <link rel="stylesheet" href="assets/css/styles.min.home.css">
 </head>
 <body id="page-top">
-<nav class="navbar navbar-light navbar-expand-md fixed-top" id="mainNav">
-    <div class="container"><a class="navbar-brand js-scroll-trigger" href="#">antee</a>
-        <button data-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-target="#navbarResponsive"
-                type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
-                value="Menu"><i class="fa fa-bars"></i></button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link" href="#">shop</a></li>
-                <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link" href="#">my beats</a></li>
-                <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link" href="#">chat</a></li>
-                <li class="nav-item nav-link js-scroll-trigger">
-                    <button class="btn btn-primary" type="button">sign out</button>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<@ui.navbar/>
 <header class="masthead" style="background-image: url('assets/img/beats.jpg');">
     <div class="intro-body">
         <div class="container">
@@ -53,23 +38,7 @@
         </div>
     </div>
 </section>
-<section class="text-center content-section" id="contact"></section>
-<div class="map-clean"></div>
-<footer>
-    <div class="container text-center">
-        <ul class="list-inline banner-social-buttons">
-            <li class="list-inline-item">&nbsp;<button class="btn btn-primary btn-lg btn-default" type="button"><i
-                            class="fa fa-google-plus fa-fw"></i></button>
-            </li>
-            <li class="list-inline-item">&nbsp;<button class="btn btn-primary btn-lg btn-default" type="button"><i
-                            class="fa fa-twitter fa-fw"></i></button>
-            </li>
-            <li class="list-inline-item">&nbsp;<button class="btn btn-primary btn-lg btn-default" type="button"><i
-                            class="fa fa-github fa-fw"></i></button>
-            </li>
-        </ul>
-        <p>Copyright ©&nbsp;Brand 2021</p></div>
-</footer>
+<@ui.footer/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
