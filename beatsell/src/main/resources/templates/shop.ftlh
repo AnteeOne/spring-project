@@ -40,15 +40,9 @@
     <h1>beats</h1>
     <div class="container">
         <div class="row" style="padding-left: 64px;padding-right: 64px;">
-            <@ui.beat_card title="Revenge" tags="beat, shop, antee..." trackid="993863203"/>
-            <@ui.beat_card title="Revenge" tags="beat, shop, antee..." trackid="993863203"/>
-            <@ui.beat_card title="Revenge" tags="beat, shop, antee..." trackid="993863203"/>
-            <@ui.beat_card title="Revenge" tags="beat, shop, antee..." trackid="993863203"/>
-            <@ui.beat_card title="Revenge" tags="beat, shop, antee..." trackid="993863203"/>
-            <@ui.beat_card title="Revenge" tags="beat, shop, antee..." trackid="993863203"/>
-            <@ui.beat_card title="Revenge" tags="beat, shop, antee..." trackid="993863203"/>
-            <@ui.beat_card title="Revenge" tags="beat, shop, antee..." trackid="993863203"/>
-            <@ui.beat_card title="Revenge" tags="beat, shop, antee..." trackid="993863203"/>
+            <#list beatsList as beat>
+                <@ui.beat_card title="${beat.title}" tags="${beat.tags}" trackid="${beat.soundCloudId}"/>
+            </#list>
         </div>
     </div>
 </section>

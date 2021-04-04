@@ -10,20 +10,20 @@
     </div>
 </#macro>
 
-<#macro soundcloud_beat_box trackid="1000319851">
+<#macro soundcloud_beat_box track_id>
     <iframe width="180px"
             height="180px"
             scrolling="no"
             frameborder="no"
             allow="autoplay"
-            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/993863203&color=%231bc98f&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${track_id}&color=%231bc98f&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
 </#macro>
 
 <#macro beat_card title tags trackid>
     <div class="col-lg-4">
         <div class="card mb-4 box-shadow">
             <div class="card-body">
-                <@soundcloud_beat_box trackid=trackid/>
+                <@soundcloud_beat_box track_id=trackid/>
                 <h4 class="text-black-50 card-title mb-2">${title}</h4>
                 <h7 class="text-muted card-subtitle mb-2">${tags}</h7>
                 <button class="btn btn-primary" type="button" style="width: 70%;margin-top: 16px;">details</button>
@@ -135,6 +135,21 @@
                         <a class="btn btn-primary" type="button" role="button" href="/signin">SIGN IN/UP</a>
                     </li>
                 </ul>
+            </div>
+        </div>
+    </nav>
+</#macro>
+
+<#macro navbar_error>
+    <nav class="navbar navbar-light navbar-expand-md fixed-top" id="mainNav">
+        <div class="container">
+            <@logo/>
+            <a class="navbar-brand js-scroll-trigger" href="/home">antee</a>
+            <button data-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-target="#navbarResponsive"
+                    type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
+                    value="Menu"><i class="fa fa-bars"></i></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+
             </div>
         </div>
     </nav>

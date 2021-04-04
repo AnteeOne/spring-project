@@ -9,7 +9,7 @@ import tech.anteeone.beatsell.services.validation.interfaces.UserValidationServi
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class UserValidationSericeImpl implements UserValidationService {
+public class UserValidationServiceImpl implements UserValidationService {
 
     @Override
     public boolean isValid(UserSignInDto dto , BindingResult bindingResult) {
