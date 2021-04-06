@@ -17,8 +17,8 @@
     <div class="intro-body">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 mx-auto"><h1 class="brand-heading">HEY, ${user.name}</h1>
-                    <p class="intro-text">34 beats is available now for purchasing!<br>You have 3 booked beats now!</p>
+                <div class="col-lg-8 mx-auto"><h1 class="brand-heading">HEY, ${user.email}</h1>
+                    <p class="intro-text">${beatsCount} beats is available now for purchasing!<br>You have ${user.getBookingCount()} booked beats now!</p>
                 </div>
             </div>
         </div>

@@ -41,7 +41,7 @@
     <div class="container">
         <div class="row" style="padding-left: 64px;padding-right: 64px;">
             <#list beatsList as beat>
-                <@ui.beat_card title="${beat.title}" tags="${beat.tags}" trackid="${beat.soundCloudId}"/>
+                <@ui.beat_card title="${beat.title}" tags="${beat.tags}" trackid="${beat.soundCloudId}" beatid="${beat.id}"/>
             </#list>
         </div>
     </div>

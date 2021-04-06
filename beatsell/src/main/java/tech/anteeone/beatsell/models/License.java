@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Builder
@@ -35,14 +36,18 @@ public class License {
 
     private Long radioStationsCount;
 
+    @Enumerated(value = EnumType.STRING)
     private TrackFile trackFile;
+
+    @ManyToMany(mappedBy = "licenses")
+    private List<Beat> beats;
 
     public enum TrackFile{
         TAGGED_MP3,
         MP3,
         WAV,
-        MP3_AND_WAV,
-        TRACKOUT,
+        MP3_and_WAV,
+        Trackout,
     }
 
 }

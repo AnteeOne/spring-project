@@ -34,8 +34,16 @@ public class Beat {
     @Enumerated(value = EnumType.STRING)
     private State state;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "beat_id")
+    @ManyToMany
+    @JoinTable(
+            name = "beat_licenses",
+            joinColumns = {
+                    @JoinColumn(name = "beat_id", referencedColumnName = "id")
+            },
+            inverseJoinColumns = {
+                    @JoinColumn(name = "license_id", referencedColumnName = "id")
+            }
+    )
     private List<License> licenses;
 
     private Long bookingCount;

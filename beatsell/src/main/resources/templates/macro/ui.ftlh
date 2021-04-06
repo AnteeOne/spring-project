@@ -19,14 +19,17 @@
             src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${track_id}&color=%231bc98f&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
 </#macro>
 
-<#macro beat_card title tags trackid>
+<#macro beat_card title tags trackid beatid>
     <div class="col-lg-4">
         <div class="card mb-4 box-shadow">
             <div class="card-body">
                 <@soundcloud_beat_box track_id=trackid/>
                 <h4 class="text-black-50 card-title mb-2">${title}</h4>
                 <h7 class="text-muted card-subtitle mb-2">${tags}</h7>
-                <button class="btn btn-primary" type="button" style="width: 70%;margin-top: 16px;">details</button>
+                <a class="btn btn-primary"
+                   type="button"
+                   href="/beats/${beatid}"
+                   role="button" style="width: 70%;margin-top: 16px;">details</a>
             </div>
         </div>
     </div>
@@ -43,7 +46,7 @@
 </#macro>
 
 <#macro logo>
-    <img src="assets/img/antee_logo.jpg" width="50px" height="50px">
+    <img src="/assets/img/antee_logo.png" width="50px" height="50px">
 </#macro>
 
 <#macro footer>
@@ -94,7 +97,7 @@
     <nav class="navbar navbar-light navbar-expand-md fixed-top" id="mainNav">
         <div class="container">
             <@logo/>
-            <a class="navbar-brand js-scroll-trigger" href="home">antee</a>
+            <a class="navbar-brand js-scroll-trigger" href="/home">antee</a>
             <button data-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-target="#navbarResponsive"
                     type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
                     value="Menu"><i class="fa fa-bars"></i></button>
@@ -104,7 +107,7 @@
                     <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link" href="/beats">my beats</a></li>
                     <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link" href="/chat">chat</a></li>
                     <li class="nav-item nav-link js-scroll-trigger">
-                        <a class="btn btn-primary" role="button" type="button" href="logout">sign out</a>
+                        <a class="btn btn-primary" role="button" type="button" href="/logout">sign out</a>
                     </li>
                 </ul>
             </div>

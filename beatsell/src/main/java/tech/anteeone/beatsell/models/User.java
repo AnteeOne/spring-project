@@ -62,4 +62,8 @@ public class User {
         return this.role == Role.ADMIN;
     }
 
+    public int getBookingCount(){
+        return bookedBeats.size();
+    }
+
 }
