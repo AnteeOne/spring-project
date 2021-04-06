@@ -8,7 +8,9 @@ import java.util.List;
 
 public interface BeatsService {
 
-    List<Beat> getAllBeats();
+    List<Beat> getAllBeats() throws BeatNotFoundException;
+
+    List<Beat> getAllUserBookedBeats(String username) throws BeatNotFoundException;
 
     Beat getBeatById(String id) throws BeatNotFoundException;
 

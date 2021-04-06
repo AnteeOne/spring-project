@@ -21,8 +21,24 @@ public class BeatsServiceImpl implements BeatsService {
     private UsersRepository usersRepository;
 
     @Override
-    public List<Beat> getAllBeats() {
-        return beatsRepository.findAll();
+    public List<Beat> getAllBeats() throws BeatNotFoundException {
+        try {
+            return beatsRepository.findAll();
+        }
+        catch (Exception e){
+            throw new BeatNotFoundException(e);
+        }
+
+    }
+
+    @Override
+    public List<Beat> getAllUserBookedBeats(String username) throws BeatNotFoundException {
+        try {
+            return beatsRepository.findAllBeatsBookedByUser(usersRepository.findByEmail(username).get().getId());
+        }
+        catch (Exception e){
+            throw new BeatNotFoundException(e);
+        }
     }
 
     @Override
@@ -39,6 +55,7 @@ public class BeatsServiceImpl implements BeatsService {
     @Override
     public void book(String beatId , String username) throws BeatNotFoundException {
         try {
+            if (!beatIsBookedByUser(beatId,username))
             usersRepository.bookBeatForUser(
                     Long.parseLong(beatId),
                     usersRepository.findByEmail(username).get().getId()
@@ -53,6 +70,7 @@ public class BeatsServiceImpl implements BeatsService {
     @Override
     public void unbook(String beatId , String username) throws BeatNotFoundException {
         try {
+            if (beatIsBookedByUser(beatId,username))
             usersRepository.unbookBeatForUser(
                     Long.parseLong(beatId),
                     usersRepository.findByEmail(username).get().getId()

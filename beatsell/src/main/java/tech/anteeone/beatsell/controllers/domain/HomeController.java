@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import tech.anteeone.beatsell.exceptions.BeatNotFoundException;
 import tech.anteeone.beatsell.exceptions.UserNotFoundException;
 import tech.anteeone.beatsell.models.User;
 import tech.anteeone.beatsell.services.domain.interfaces.BeatsService;
@@ -28,7 +29,7 @@ public class HomeController {
             model.addAttribute("user", user);
             return "home";
         }
-        catch (UserNotFoundException e){
+        catch (UserNotFoundException | BeatNotFoundException e){
             e.printStackTrace();
             return "error";
         }
