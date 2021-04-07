@@ -10,6 +10,8 @@ public interface BeatsService {
 
     List<Beat> getAllBeats() throws BeatNotFoundException;
 
+    Integer getBookingsCount();
+
     List<Beat> getAllUserBookedBeats(String username) throws BeatNotFoundException;
 
     Beat getBeatById(String id) throws BeatNotFoundException;

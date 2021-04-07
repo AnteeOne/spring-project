@@ -50,4 +50,8 @@ public class License {
         Trackout,
     }
 
+    public Long getLicenseSells(){
+        return beats.size() * price;
+    }
+
 }

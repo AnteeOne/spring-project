@@ -32,6 +32,11 @@ public class BeatsServiceImpl implements BeatsService {
     }
 
     @Override
+    public Integer getBookingsCount() {
+        return beatsRepository.getBookingsCount();
+    }
+
+    @Override
     public List<Beat> getAllUserBookedBeats(String username) throws BeatNotFoundException {
         try {
             return beatsRepository.findAllBeatsBookedByUser(usersRepository.findByEmail(username).get().getId());

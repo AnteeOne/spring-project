@@ -16,4 +16,8 @@ public interface BeatsRepository extends JpaRepository<Beat,Long> {
     @Modifying
     @Transactional
     List<Beat> findAllBeatsBookedByUser(@Param("userid") Long userid);
+
+    @Query(value = "select count(*) from user_booked_beats",nativeQuery = true)
+    @Transactional
+    Integer getBookingsCount();
 }
