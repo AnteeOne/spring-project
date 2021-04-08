@@ -15,7 +15,6 @@ public class SignInController {
     }
 
     @PostMapping("/signin")
-    private void signIn(UserSignInDto dto){
+    private void signIn(UserSignInDto dto){}
 
-    }
 }

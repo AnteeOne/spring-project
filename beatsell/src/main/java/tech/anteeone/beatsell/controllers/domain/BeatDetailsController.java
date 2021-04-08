@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import tech.anteeone.beatsell.exceptions.BeatNotFoundException;
+import tech.anteeone.beatsell.utils.exceptions.BeatNotFoundException;
 import tech.anteeone.beatsell.services.domain.interfaces.BeatsService;
 
 import java.security.Principal;

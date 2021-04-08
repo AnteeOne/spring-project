@@ -2,7 +2,7 @@ package tech.anteeone.beatsell.services.domain.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import tech.anteeone.beatsell.exceptions.BeatNotFoundException;
+import tech.anteeone.beatsell.utils.exceptions.BeatNotFoundException;
 import tech.anteeone.beatsell.models.Beat;
 import tech.anteeone.beatsell.repositories.jpa.BeatsRepository;
 import tech.anteeone.beatsell.repositories.jpa.UsersRepository;
@@ -52,7 +52,7 @@ public class BeatsServiceImpl implements BeatsService {
             Long parsedId = Long.parseLong(id);
             return beatsRepository.findById(parsedId).get();
         }
-        catch (NumberFormatException e){
+        catch (Exception e){
             throw new BeatNotFoundException(e);
         }
     }

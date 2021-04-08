@@ -2,7 +2,7 @@ package tech.anteeone.beatsell.services.domain.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import tech.anteeone.beatsell.exceptions.UserNotFoundException;
+import tech.anteeone.beatsell.utils.exceptions.UserNotFoundException;
 import tech.anteeone.beatsell.models.User;
 import tech.anteeone.beatsell.repositories.jpa.UsersRepository;
 import tech.anteeone.beatsell.services.domain.interfaces.UserService;

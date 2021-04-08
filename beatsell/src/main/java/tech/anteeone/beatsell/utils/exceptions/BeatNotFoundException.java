@@ -1,4 +1,4 @@
-package tech.anteeone.beatsell.exceptions;
+package tech.anteeone.beatsell.utils.exceptions;
 
 public class BeatNotFoundException extends Exception {
 
