@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import tech.anteeone.beatsell.models.User;
 
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -26,6 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/signup","/signin","/").permitAll()
                 .antMatchers("/home","/shop","/beats/**").authenticated()
+                .antMatchers("/admin/**").hasAuthority(User.Role.ADMIN.name())
                 .and()
                 .formLogin()
                 .loginPage("/signin")

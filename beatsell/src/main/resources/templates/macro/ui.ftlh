@@ -46,7 +46,7 @@
 </#macro>
 
 <#macro logo>
-    <img src="/assets/img/antee_logo.png" width="50px" height="50px">
+    <img src="/assets/img/antee_logo.png" width="70px" height="70px">
 </#macro>
 
 <#macro footer>

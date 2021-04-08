@@ -28,7 +28,7 @@
                 </div>
                 <div class="row">
                     <#list licensesList as license>
-                        <@admin_ui.countCard "${license.title}" "${license.getLicenseSells()}$"/>
+                        <@admin_ui.countCard "${license.title} total" "${license.getLicenseSells()}$"/>
                     </#list>
                     <@admin_ui.countCard "Booking Beats" "${bookingsCount}"/>
                     <div class="col">
