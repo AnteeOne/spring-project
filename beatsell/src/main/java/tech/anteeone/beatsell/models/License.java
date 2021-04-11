@@ -54,4 +54,8 @@ public class License {
         return beats.size() * price;
     }
 
+    public String getProfitStatus(){
+        return isForProfit? "Yes" : "No";
+    }
+
 }

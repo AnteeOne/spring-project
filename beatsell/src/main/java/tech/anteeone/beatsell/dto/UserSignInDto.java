@@ -15,7 +15,7 @@ public class UserSignInDto {
     private String email;
 
     @NotNull(message = "Please fill the password")
-    @Min(value = 8, message = "The password must contain at least 8 characters  ")
+    @Min(value = 8, message = "The password must contain at least 8 characters ")
     @Max(value = 128, message = "Password too long")
     private String password;
 }

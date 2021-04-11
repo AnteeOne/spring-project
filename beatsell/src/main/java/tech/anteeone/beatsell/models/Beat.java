@@ -4,9 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import tech.anteeone.beatsell.models.rest.RestBeat;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 @Builder
@@ -74,4 +76,10 @@ public class Beat {
     public boolean isBooked(){
         return this.bookingCount > 0;
     }
+
+    public RestBeat getRestBeat(){
+        return new RestBeat(this);
+    }
+
+    public int getBookingSize(){return bookedUsers.size();}
 }
