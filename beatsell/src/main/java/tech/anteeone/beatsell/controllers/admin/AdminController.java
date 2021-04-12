@@ -80,7 +80,7 @@ public class AdminController {
         }
     }
 
-    @PostMapping(value = "/admin/tables",name = "save_beat")
+    @PostMapping(value = "/admin/tables",name = "save_beat",params = {"savebeat"})
     private String saveBeat(@Valid BeatDto beatDto,
                             BindingResult bindingResult,
                             Model model){
@@ -100,7 +100,7 @@ public class AdminController {
         }
     }
 
-    @PostMapping(value = "/admin/tables",name = "save_license")
+    @PostMapping(value = "/admin/tables",name = "save_license",params = {"savelicense"})
     private String saveLicense(@Valid LicenseDto licenseDto,
                                BindingResult bindingResult,
                                Model model){

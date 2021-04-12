@@ -131,7 +131,7 @@
                 <div class="row">
                     <div class="col-md-12" style="margin-top: 24px;">
                         <h1 class="text-center">Add Beat</h1>
-                        <form name="save_beat" method="post">
+                        <form action="/admin/tables?savebeat" name="save_beat" method="post">
                             <div class="form-group"><label>Title </label><input name="title" class="form-control"
                                                                                 type="text" placeholder="Title"></div>
                             <div class="form-group"><label>BPM</label><input name="bpm" class="form-control"
@@ -191,7 +191,7 @@
                 <div class="row">
                     <div class="col-md-12" style="margin-top: 24px;">
                         <h1 class="text-center">Add License</h1>
-                        <form name="save_license" method="post">
+                        <form action="/admin/tables?savelicense" name="save_license" method="post">
                             <div class="form-group"><label>Title </label>
                                 <input class="form-control" type="text" name="title" placeholder="Title">
                             </div>
@@ -227,18 +227,21 @@
                             </div>
                             <button class="btn btn-dark" type="submit">Save</button>
 
-                            <#if _licenseFlag??>
-                                <div class="alert alert-danger">
-                                    Invalid data!
-                                </div>
-                            </#if>
-                            <#if licenseFlag??>
-                                <div class="alert alert-success">
-                                    License has been added!
-                                </div>
-                            </#if>
 
                         </form>
+
+                        <br>
+                        <#if _licenseFlag??>
+                            <div class="alert alert-danger">
+                                Invalid data!
+                            </div>
+                        </#if>
+                        <#if licenseFlag??>
+                            <div class="alert alert-success">
+                                License has been added!
+                            </div>
+                        </#if>
+
                     </div>
                 </div>
             </div>
