@@ -42,7 +42,7 @@
                                 <tbody>
                                 <#list beatsList as beat>
                                     <tr>
-                                        <td>${beat.title}</td>
+                                        <td><a href="/admin/tables/beat/${beat.id}" col>${beat.title}</a></td>
                                         <td>${beat.tags}</td>
                                         <td>${beat.bpm}</td>
                                         <td>${beat.getBookingSize()}</td>
@@ -95,7 +95,7 @@
                                 <tbody>
                                 <#list licensesList as license >
                                     <tr>
-                                        <td>${license.title}</td>
+                                        <td><a href="/admin/tables/license/${license.id}" col>${license.title}</a></td>
                                         <td>${license.distributionCopiesCount}</td>
                                         <td>${license.price}</td>
                                         <td>${license.getProfitStatus()}</td>
@@ -154,10 +154,10 @@
                                                                                        type="number" placeholder="ID">
                             </div>
                             <div class="form-group">
-                                <label>Mood </label>
+                                <label>State </label>
                                 <select class="form-control" name="state" size="1">
-                                    <option value="Free">Free</option>
-                                    <option value="Sold">Sold</option>
+                                    <option value="FREE">Free</option>
+                                    <option value="SOLD">Sold</option>
                                 </select>
                             </div>
                             <div class="form-group"><label>Tags </label><input name="tags" class="form-control"
@@ -199,10 +199,10 @@
                                 <input class="form-control" type="number" name="price" placeholder="Price">
                             </div>
                             <div class="form-group"><label>Profit </label>
-                                <input class="form-control" type="checkbox" name="profit" placeholder="Profit">
+                                <input class="form-control" type="checkbox" name="isForProfit" id="isForProfit" placeholder="Profit">
                             </div>
                             <div class="form-group"><label>Music Recording </label>
-                                <input class="form-control" type="checkbox" name="musicRecording" placeholder="Music Recording">
+                                <input class="form-control" type="checkbox" name="isForMusicRecording" id="isForMusicRecording" placeholder="Music Recording">
                             </div>
                             <div class="form-group"><label>Audio Streams Count</label>
                                 <input class="form-control" type="number" name="audioStreamsCount" placeholder="Audio Streams Count">

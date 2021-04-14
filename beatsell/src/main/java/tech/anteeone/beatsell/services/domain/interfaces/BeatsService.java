@@ -1,5 +1,6 @@
 package tech.anteeone.beatsell.services.domain.interfaces;
 
+import tech.anteeone.beatsell.dto.BeatDto;
 import tech.anteeone.beatsell.utils.exceptions.BeatNotFoundException;
 import tech.anteeone.beatsell.models.Beat;
 
@@ -21,4 +22,9 @@ public interface BeatsService {
 
     boolean beatIsBookedByUser(String beatid,String username) throws BeatNotFoundException;
 
+    void saveBeat(BeatDto beatDto);
+
+    void updateBeat(BeatDto beatDto,String id) throws BeatNotFoundException;
+
+    void deleteBeatById(String beatId) throws BeatNotFoundException;
 }

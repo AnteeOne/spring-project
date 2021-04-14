@@ -2,7 +2,6 @@ package tech.anteeone.beatsell.dto;
 
 import lombok.Data;
 
-import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 
 @Data

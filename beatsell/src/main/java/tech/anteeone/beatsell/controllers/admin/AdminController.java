@@ -12,7 +12,7 @@ import tech.anteeone.beatsell.services.domain.interfaces.BeatsService;
 import tech.anteeone.beatsell.services.domain.interfaces.LicensesService;
 import tech.anteeone.beatsell.services.domain.interfaces.UserService;
 import tech.anteeone.beatsell.services.validation.interfaces.ValidationUtilsService;
-import tech.anteeone.beatsell.utils.exceptions.BeatNotFoundException;
+import static tech.anteeone.beatsell.controllers.admin.AdminControllerUtils.*;
 
 import javax.validation.Valid;
 import java.security.Principal;
@@ -64,7 +64,7 @@ public class AdminController {
         model.addAttribute("user" , principal);
         try {
 //            model.addAttribute("user" , userService.findByEmail(principal.getName()));
-            savePageArgs(model);
+            saveListsInPageArgs(model,beatsService,licensesService);
             return "admin_tables";
         }
         //todo
@@ -86,11 +86,12 @@ public class AdminController {
                             Model model){
         try {
             if(bindingResult.hasErrors()){
-                savePageArgs(model);
-                saveResult(model,false,"beat");
+                saveListsInPageArgs(model,beatsService,licensesService);
+                loadFormResult(model,false,"beat");
                 return "admin_tables";
             }
-            saveResult(model,true,"beat");
+            loadFormResult(model,true,"beat");
+            beatsService.saveBeat(beatDto);
             return "redirect:";
         }
         catch (Exception e){
@@ -106,11 +107,12 @@ public class AdminController {
                                Model model){
         try {
             if(bindingResult.hasErrors()){
-                savePageArgs(model);
-                saveResult(model,false,"license");
+                saveListsInPageArgs(model,beatsService,licensesService);
+                loadFormResult(model,false,"license");
                 return "admin_tables";
             }
-            saveResult(model,true,"license");
+            loadFormResult(model,true,"license");
+            licensesService.saveLicense(licenseDto);
             return "redirect:";
         }
         catch (Exception e){
@@ -121,19 +123,7 @@ public class AdminController {
 
     }
 
-    private void savePageArgs(Model model) throws BeatNotFoundException {
-        model.addAttribute("beatsList",beatsService.getAllBeats());
-        model.addAttribute("licensesList",licensesService.getLicenses());
-    }
 
-    private void saveResult(Model model,boolean isSuccess,String flag){
-        if(isSuccess){
-            model.addAttribute(flag + "Flag ",isSuccess);
-        }
-        else{
-            model.addAttribute("_" + flag + "Flag",isSuccess);
-        }
-    }
 
 
 }

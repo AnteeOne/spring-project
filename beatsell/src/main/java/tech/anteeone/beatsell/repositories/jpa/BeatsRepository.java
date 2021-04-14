@@ -20,4 +20,10 @@ public interface BeatsRepository extends JpaRepository<Beat,Long> {
     @Query(value = "select count(*) from user_booked_beats",nativeQuery = true)
     @Transactional
     Integer getBookingsCount();
+
+    @Transactional
+    @Modifying
+    @Query(value = "DELETE FROM user_booked_beats where beat_id=:beatid",nativeQuery = true)
+    void deleteBeatPinnedUsers(@Param("beatid") Long beatid);
+
 }

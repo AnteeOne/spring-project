@@ -58,4 +58,12 @@ public class License {
         return isForProfit? "Yes" : "No";
     }
 
+    public String profitToFreemarker(){
+        return isForProfit? "true" : "false";
+    }
+
+    public String musicToFreemarker(){
+        return isForMusicRecording? "true" : "false";
+    }
+
 }

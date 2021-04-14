@@ -2,6 +2,9 @@ package tech.anteeone.beatsell.services.domain.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import tech.anteeone.beatsell.controllers.admin.AdminControllerUtils;
+import tech.anteeone.beatsell.dto.BeatDto;
+import tech.anteeone.beatsell.repositories.jpa.LicensesRepository;
 import tech.anteeone.beatsell.utils.exceptions.BeatNotFoundException;
 import tech.anteeone.beatsell.models.Beat;
 import tech.anteeone.beatsell.repositories.jpa.BeatsRepository;
@@ -19,6 +22,9 @@ public class BeatsServiceImpl implements BeatsService {
 
     @Autowired
     private UsersRepository usersRepository;
+
+    @Autowired
+    private LicensesRepository licensesRepository;
 
     @Override
     public List<Beat> getAllBeats() throws BeatNotFoundException {
@@ -47,9 +53,9 @@ public class BeatsServiceImpl implements BeatsService {
     }
 
     @Override
-    public Beat getBeatById(String id) throws BeatNotFoundException {
+    public Beat getBeatById(String beatId) throws BeatNotFoundException {
         try {
-            Long parsedId = Long.parseLong(id);
+            Long parsedId = Long.parseLong(beatId);
             return beatsRepository.findById(parsedId).get();
         }
         catch (Exception e){
@@ -70,6 +76,21 @@ public class BeatsServiceImpl implements BeatsService {
             throw new BeatNotFoundException(e);
         }
 
+    }
+
+    @Override
+    public void saveBeat(BeatDto dto) {
+        Beat beat = Beat.builder()
+                .mood(Beat.Mood.valueOf(dto.getMood()))
+                .bpm(dto.getBpm())
+                .soundCloudId(dto.getSoundCloudId())
+                .state(Beat.State.valueOf(dto.getState()))
+                .title(dto.getTitle())
+                .bookingCount(0L)
+                .tags(dto.getTags())
+                .licenses(dto.getLicenses().stream().map(licenseId -> licensesRepository.findById(licenseId).get()).collect(Collectors.toList()))
+                .build();
+        beatsRepository.save(beat);
     }
 
     @Override
@@ -100,6 +121,42 @@ public class BeatsServiceImpl implements BeatsService {
         catch (Exception e){
             throw new BeatNotFoundException(e);
         }
+    }
 
+    @Override
+    public void updateBeat(BeatDto beatDto , String id) throws BeatNotFoundException {
+        try {
+            Beat beat = Beat.builder()
+                    .title(beatDto.getTitle())
+                    .tags(beatDto.getTags())
+                    .state(Beat.State.valueOf(beatDto.getState()))
+                    .mood(Beat.Mood.valueOf(beatDto.getMood()))
+                    .bpm(beatDto.getBpm())
+                    .soundCloudId(beatDto.getSoundCloudId())
+                    .licenses(beatDto.getLicenses().stream().map(
+                            licenseId -> licensesRepository
+                            .findById(licenseId)
+                            .orElseThrow(IllegalStateException::new)
+                    ).collect(Collectors.toList()))
+                    .build();
+            Beat oldBeat = beatsRepository.findById(Long.parseLong(id)).orElseThrow(IllegalStateException::new);
+            AdminControllerUtils.updateData(oldBeat,beat);
+            beatsRepository.save(oldBeat);
+        }
+        catch (Exception e){
+            throw new BeatNotFoundException(e);
+        }
+
+    }
+
+    @Override
+    public void deleteBeatById(String beatId) throws BeatNotFoundException {
+        try {
+            beatsRepository.deleteBeatPinnedUsers(Long.parseLong(beatId));
+            beatsRepository.deleteById(Long.parseLong(beatId));
+        }
+        catch (Exception e){
+            throw new BeatNotFoundException(e);
+        }
     }
 }
