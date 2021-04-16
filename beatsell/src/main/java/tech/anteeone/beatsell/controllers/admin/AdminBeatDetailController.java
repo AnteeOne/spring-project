@@ -1,5 +1,6 @@
 package tech.anteeone.beatsell.controllers.admin;
 
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +27,9 @@ public class AdminBeatDetailController {
 
     @Autowired
     LicensesService licensesService;
+    
+    @Autowired
+    Logger logger;
 
     @GetMapping("/admin/tables/beat/{beatid}")
     private String getBeatDetailPage(@PathVariable String beatid,
@@ -38,8 +42,7 @@ public class AdminBeatDetailController {
             return "admin_beat_detail";
         }
         catch (BeatNotFoundException e){
-            //todo
-            e.printStackTrace();
+            logger.error("Beat not found",e);
             return "error";
         }
     }
@@ -62,7 +65,7 @@ public class AdminBeatDetailController {
         }
         catch (Exception e){
             //todo
-            e.printStackTrace();
+            logger.error("error",e);
             return "error";
         }
     }
@@ -72,7 +75,7 @@ public class AdminBeatDetailController {
             beatsService.deleteBeatById(beatid);
             return "redirect:/admin/tables";
         } catch (BeatNotFoundException e) {
-            e.printStackTrace();
+            logger.error("error",e);
             //todo
             return "error";
         }

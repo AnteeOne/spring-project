@@ -25,6 +25,7 @@
                     <div class="col-md-12" style="margin-top: 24px;">
                         <h1 class="text-center"></h1>
                         <form action="?savelicense" name="save_license" method="post">
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                             <div class="form-group"><label>Title </label>
                                 <input class="form-control" type="text" name="title" value="${license.title}">
                             </div>
@@ -70,6 +71,7 @@
                         </form>
                         <br>
                         <form action="?deletelicense" name="delete_license" method="post">
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                             <button class="btn btn-danger" type="submit">Delete</button>
                         </form>
                         <p></p>

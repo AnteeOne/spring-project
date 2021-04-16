@@ -1,5 +1,6 @@
 package tech.anteeone.beatsell.controllers.domain;
 
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,33 +17,35 @@ public class BeatDetailsController {
     @Autowired
     BeatsService beatsService;
 
+    @Autowired
+    Logger logger;
+
 
     @GetMapping("/beats/{beatid}")
-    private String getBeatDetailPage(@PathVariable String beatid,
-                                     Model model,
+    private String getBeatDetailPage(@PathVariable String beatid ,
+                                     Model model ,
                                      Principal principal
-    ){
+    ) {
         try {
-            model.addAttribute("beat",beatsService.getBeatById(beatid));
-            model.addAttribute("bookingCount",beatsService.getBeatById(beatid).getBookedUsers().size());
-            model.addAttribute("bookingStatus",beatsService.beatIsBookedByUser(beatid, principal.getName()));
-        }
-        catch (BeatNotFoundException e){
-            e.printStackTrace();
+            model.addAttribute("beat" , beatsService.getBeatById(beatid));
+            model.addAttribute("bookingCount" , beatsService.getBeatById(beatid).getBookedUsers().size());
+            model.addAttribute("bookingStatus" , beatsService.beatIsBookedByUser(beatid , principal.getName()));
+        } catch (BeatNotFoundException e) {
+            logger.error("error" , e);
         }
 
         return "beat_details";
     }
 
     @GetMapping("/beats/book/{beatid}")
-    private String bookBeat(@PathVariable String beatid,
-                          Model model,
-                          Principal principal){
+    private String bookBeat(@PathVariable String beatid ,
+                            Model model ,
+                            Principal principal) {
 
         try {
-            beatsService.book(beatid,principal.getName());
+            beatsService.book(beatid , principal.getName());
         } catch (BeatNotFoundException e) {
-            e.printStackTrace();
+            logger.error("error" , e);
         }
 
         return "redirect:/beats/{beatid}";
@@ -50,13 +53,13 @@ public class BeatDetailsController {
     }
 
     @GetMapping("/beats/unbook/{beatid}")
-    private String unbookBeat(@PathVariable String beatid,
-                            Model model,
-                            Principal principal){
+    private String unbookBeat(@PathVariable String beatid ,
+                              Model model ,
+                              Principal principal) {
         try {
-            beatsService.unbook(beatid,principal.getName());
+            beatsService.unbook(beatid , principal.getName());
         } catch (BeatNotFoundException e) {
-            e.printStackTrace();
+            logger.error("error" , e);
         }
         return "redirect:/beats/{beatid}";
 

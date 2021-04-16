@@ -1,5 +1,6 @@
 package tech.anteeone.beatsell.controllers.domain;
 
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +22,10 @@ public class HomeController {
     @Autowired
     BeatsService beatsService;
 
+    @Autowired
+    Logger logger;
+
+
     @GetMapping("/home")
     private String getHomePage(Model model, Principal principal){
         try {
@@ -30,7 +35,7 @@ public class HomeController {
             return "home";
         }
         catch (UserNotFoundException | BeatNotFoundException e){
-            e.printStackTrace();
+            logger.error("error",e);
             return "error";
         }
 

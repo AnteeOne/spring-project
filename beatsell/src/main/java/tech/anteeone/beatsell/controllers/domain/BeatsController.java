@@ -1,5 +1,6 @@
 package tech.anteeone.beatsell.controllers.domain;
 
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,13 +16,17 @@ public class BeatsController {
     @Autowired
     BeatsService beatsService;
 
+    @Autowired
+    Logger logger;
+
+
     @GetMapping("/beats")
-    private String getBeatsPage(Model model, Principal principal){
+    private String getBeatsPage(Model model , Principal principal) {
         try {
-            model.addAttribute("beatsList",beatsService.getAllUserBookedBeats(principal.getName()));
+            model.addAttribute("beatsList" , beatsService.getAllUserBookedBeats(principal.getName()));
             return "beats";
         } catch (BeatNotFoundException e) {
-            e.printStackTrace();
+            logger.error("error" , e);
             return "error";
         }
     }

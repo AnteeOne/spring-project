@@ -1,5 +1,6 @@
 package tech.anteeone.beatsell.controllers.admin;
 
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +27,10 @@ public class AdminLicenseDetailController {
     @Autowired
     BeatsService beatsService;
 
+    @Autowired
+    Logger logger;
+
+
     @GetMapping("/admin/tables/license/{licenseid}")
     private String getLicenseDetailPage(@PathVariable String licenseid,
                                      Model model,
@@ -40,7 +45,7 @@ public class AdminLicenseDetailController {
         }
         catch (LicenseNotFoundException e){
             //todo
-            e.printStackTrace();
+            logger.error("error",e);
             return "error";
         }
     }
@@ -63,7 +68,7 @@ public class AdminLicenseDetailController {
         }
         catch (Exception e){
             //todo
-            e.printStackTrace();
+            logger.error("error",e);
             return "error";
         }
     }
@@ -73,7 +78,7 @@ public class AdminLicenseDetailController {
             licensesService.deleteLicenseById(licenseid);
             return "redirect:/admin/tables";
         } catch (LicenseNotFoundException e) {
-            e.printStackTrace();
+            logger.error("error",e);
             //todo
             return "error";
         }

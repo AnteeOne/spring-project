@@ -1,5 +1,6 @@
 package tech.anteeone.beatsell.controllers.admin;
 
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,22 +33,18 @@ public class AdminController {
     @Autowired
     ValidationUtilsService validationUtils;
 
+    @Autowired
+    Logger logger;
+
     @GetMapping("/admin")
-    private String getAdminIndexPage(Model model , Principal principal) {
+    private String getAdminIndexPage(Model model) {
         try {
-//            model.addAttribute("user" , userService.findByEmail(principal.getName()));
             model.addAttribute("bookingsCount",beatsService.getBookingsCount());
             model.addAttribute("licensesList",licensesService.getLicenses());
             return "admin_index";
         }
-        //todo
-//        catch (UserNotFoundException e){
-//            e.printStackTrace();
-//            return "error";
-//
-//        }
         catch (Exception e){
-            e.printStackTrace();
+            logger.error("error",e);
             return "error";
 
         }
@@ -63,18 +60,11 @@ public class AdminController {
     private String getAdminTablesPage(Model model , Principal principal) {
         model.addAttribute("user" , principal);
         try {
-//            model.addAttribute("user" , userService.findByEmail(principal.getName()));
             saveListsInPageArgs(model,beatsService,licensesService);
             return "admin_tables";
         }
-        //todo
-//        catch (UserNotFoundException e){
-//            e.printStackTrace();
-//            return "error";
-//
-//        }
         catch (Exception e){
-            e.printStackTrace();
+            logger.error("error",e);
             return "error";
 
         }
@@ -95,8 +85,7 @@ public class AdminController {
             return "redirect:";
         }
         catch (Exception e){
-            //todo
-            e.printStackTrace();
+            logger.error("error",e);
             return "error";
         }
     }
@@ -116,8 +105,7 @@ public class AdminController {
             return "redirect:";
         }
         catch (Exception e){
-            //todo
-            e.printStackTrace();
+            logger.error("error",e);
             return "error";
         }
 

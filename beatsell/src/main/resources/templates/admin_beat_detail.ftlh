@@ -26,6 +26,7 @@
                     <div class="col-md-12" style="margin-top: 24px;">
                         <h1 class="text-center"></h1>
                         <form action="?savebeat" name="save_beat" method="post">
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                             <div class="form-group"><label>Title </label>
                                 <input name="title" class="form-control" type="text" placeholder="Title" value="${beat.title}">
                             </div>
@@ -74,6 +75,7 @@
                         </form>
 
                             <form action="?deletebeat" name="delete_beat" method="post">
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                                 <button class="btn btn-danger" type="submit">Delete</button>
                             </form>
 

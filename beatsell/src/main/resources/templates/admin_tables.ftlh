@@ -132,6 +132,7 @@
                     <div class="col-md-12" style="margin-top: 24px;">
                         <h1 class="text-center">Add Beat</h1>
                         <form action="/admin/tables?savebeat" name="save_beat" method="post">
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                             <div class="form-group"><label>Title </label><input name="title" class="form-control"
                                                                                 type="text" placeholder="Title"></div>
                             <div class="form-group"><label>BPM</label><input name="bpm" class="form-control"
@@ -192,6 +193,7 @@
                     <div class="col-md-12" style="margin-top: 24px;">
                         <h1 class="text-center">Add License</h1>
                         <form action="/admin/tables?savelicense" name="save_license" method="post">
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                             <div class="form-group"><label>Title </label>
                                 <input class="form-control" type="text" name="title" placeholder="Title">
                             </div>
