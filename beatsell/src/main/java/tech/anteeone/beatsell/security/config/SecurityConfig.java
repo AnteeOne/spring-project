@@ -14,7 +14,6 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import tech.anteeone.beatsell.models.User;
 
 @EnableWebSecurity
-@Order(1)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -31,6 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/signup","/signin","/").permitAll()
                 .antMatchers("/home","/shop","/beats/**").authenticated()
                 .antMatchers("/admin/**").hasAuthority(User.Role.ADMIN.name())
+                .antMatchers("/api/v1/**").authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/signin")

@@ -1,3 +1,43 @@
+POST localhost:8080/api/v1/beats/10/
+Content-Type: application/json
+
+{
+  "title": "Revengee234 sdfsdfeeee",
+  "tags": "angry,sdfsdfsdbattle,brass",
+  "bpm": 140,
+  "mood": "Angry",
+  "soundCloudId": "1000319851",
+  "state": "FREE",
+  "licenses": [
+    1
+  ]
+}
+
+###
+
 GET localhost:8080/api/v1/beats/
+
+###
+
+GET localhost:8080/api/v1/beats/1
+
+###
+
+POST localhost:8080/api/v1/beats/add/
+Content-Type: application/json
+
+{
+  "title": "New Revenge",
+  "tags": "angry,sdfsdfsdbattle,brass",
+  "bpm": 140,
+  "mood": "Angry",
+  "soundCloudId": "1000319851",
+  "state": "FREE",
+  "licenses": [
+    1,
+    2,
+    4
+  ]
+}
 
 ###

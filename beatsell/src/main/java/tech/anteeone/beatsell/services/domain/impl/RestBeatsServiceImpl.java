@@ -3,6 +3,7 @@ package tech.anteeone.beatsell.services.domain.impl;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import tech.anteeone.beatsell.dto.BeatDto;
 import tech.anteeone.beatsell.models.rest.RestBeat;
 import tech.anteeone.beatsell.repositories.jpa.BeatsRepository;
 import tech.anteeone.beatsell.services.domain.interfaces.BeatsService;
@@ -31,7 +32,12 @@ public class RestBeatsServiceImpl implements RestBeatsService {
     }
 
     @Override
-    public void add(RestBeat beat) {
-      //todo
+    public void add(BeatDto dto) {
+        beatsService.saveBeat(dto);
+    }
+
+    @Override
+    public void update(BeatDto dto , String beatId) throws BeatNotFoundException {
+        beatsService.updateBeat(dto,beatId);
     }
 }
