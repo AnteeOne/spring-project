@@ -1,5 +1,7 @@
 package tech.anteeone.beatsell.repositories.jpa;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -25,5 +27,7 @@ public interface BeatsRepository extends JpaRepository<Beat,Long> {
     @Modifying
     @Query(value = "DELETE FROM user_booked_beats where beat_id=:beatid",nativeQuery = true)
     void deleteBeatPinnedUsers(@Param("beatid") Long beatid);
+
+    Page<Beat> findAll(Pageable pageable);
 
 }

@@ -31,8 +31,12 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 mx-auto"><h2>About me</h2>
-                <p>Grayscale includes full HTML, CSS, and custom JavaScript files along with SASS and LESS files for
-                    easy customization!</p></div>
+                <p>
+                    Hey , my name iz Azat and i'm asping sound designer from the Kazan!
+                    Hope for you listening some of beats :D
+                </p>
+
+            </div>
         </div>
     </div>
 </section>
@@ -40,9 +44,9 @@
          style="background-image: url('assets/img/beats.jpg');">
     <div class="container">
         <div class="col-lg-8 mx-auto"><h1>some of beats</h1>
-        <@ui.soundcloud_beat trackid="993863203"/>
-        <@ui.soundcloud_beat trackid="993863203"/>
-        <@ui.soundcloud_beat trackid="993863203"/>
+        <@ui.soundcloud_beat trackid="1000319851"/>
+        <@ui.soundcloud_beat trackid="997154917"/>
+        <@ui.soundcloud_beat trackid="991140688"/>
     </div>
     <div class="container">
         <div class="intro"></div>

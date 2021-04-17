@@ -2,6 +2,9 @@ package tech.anteeone.beatsell.controllers.domain;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,9 +22,11 @@ public class ShopController {
 
 
     @GetMapping("/shop")
-    private String getShopPage(Model model){
+    private String getShopPage(Model model,
+                               @PageableDefault(sort = {"id"},direction = Sort.Direction.DESC) Pageable pageable){
         try {
-            model.addAttribute("beatsList",beatsService.getAllBeats());
+            model.addAttribute("page",beatsService.getAllPaginatedBeats(pageable));
+            model.addAttribute("url","/shop");
             return "shop";
         } catch (BeatNotFoundException e) {
             logger.error("error",e);

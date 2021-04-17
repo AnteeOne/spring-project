@@ -1,6 +1,8 @@
 package tech.anteeone.beatsell.services.domain.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 import tech.anteeone.beatsell.controllers.admin.AdminControllerUtils;
 import tech.anteeone.beatsell.dto.BeatDto;
@@ -35,6 +37,16 @@ public class BeatsServiceImpl implements BeatsService {
             throw new BeatNotFoundException(e);
         }
 
+    }
+
+    @Override
+    public Page<Beat> getAllPaginatedBeats(Pageable pageable) throws BeatNotFoundException {
+        try {
+            return beatsRepository.findAll(pageable);
+        }
+        catch (Exception e){
+            throw new BeatNotFoundException(e);
+        }
     }
 
     @Override

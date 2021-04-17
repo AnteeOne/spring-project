@@ -38,9 +38,10 @@
 <div class="map-clean"></div>
 <section class="text-center content-section" id="contact">
     <h1>beats</h1>
+    <@ui.pager url page/>
     <div class="container">
         <div class="row" style="padding-left: 64px;padding-right: 64px;">
-            <#list beatsList as beat>
+            <#list page.content as beat>
                 <@ui.beat_card title="${beat.title}" tags="${beat.tags}" trackid="${beat.soundCloudId}" beatid="${beat.id}"/>
             </#list>
         </div>

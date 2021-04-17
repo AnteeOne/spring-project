@@ -27,14 +27,11 @@
 <section class="text-center content-section" id="about">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 mx-auto"><h2>About grayscale</h2>
-                <p>Grayscale is a free Bootstrap theme. It can be yours right now, simply download the template on&nbsp;<a
-                            href="#">the preview page</a>. The theme is open source, and you can use it for any purpose,
-                    personal or commercial.</p>
-                <p>This theme features stock photos by&nbsp;<a href="#">Gratisography</a>&nbsp;along with a custom
-                    Google Maps skin courtesy of&nbsp;<a href="#">Snazzy Maps</a>.</p>
-                <p>Grayscale includes full HTML, CSS, and custom JavaScript files along with SASS and LESS files for
-                    easy customization!</p></div>
+            <div class="col-lg-8 mx-auto"><h2>About shop</h2>
+                <p>All my beats for you booking are available on <a
+                            href="/shop">the shop page</a> , where you can find all detail information about purchasing</p>
+                <p>On &nbsp<a href="/beats">the beats page</a>&nbsp; are located all you booked beats
+                <p>Also , just for fun , you can click on "Random" button and it will be displayed a random musical genre for you :)</p>
         </div>
     </div>
 </section>

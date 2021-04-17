@@ -1,5 +1,7 @@
 package tech.anteeone.beatsell.services.domain.interfaces;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import tech.anteeone.beatsell.dto.BeatDto;
 import tech.anteeone.beatsell.utils.exceptions.BeatNotFoundException;
 import tech.anteeone.beatsell.models.Beat;
@@ -9,6 +11,8 @@ import java.util.List;
 public interface BeatsService {
 
     List<Beat> getAllBeats() throws BeatNotFoundException;
+
+    Page<Beat> getAllPaginatedBeats(Pageable pageable) throws BeatNotFoundException;
 
     Integer getBookingsCount();
 
