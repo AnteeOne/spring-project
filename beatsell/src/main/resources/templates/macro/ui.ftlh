@@ -94,6 +94,7 @@
 </#macro>
 
 <#macro navbar>
+    <script src="assets/js/ajax.js"></script>
     <nav class="navbar navbar-light navbar-expand-md fixed-top" id="mainNav">
         <div class="container">
             <@logo/>
@@ -105,7 +106,9 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link" href="/shop">shop</a></li>
                     <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link" href="/beats">my beats</a></li>
-                    <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link" href="/chat">chat</a></li>
+                    <li class="nav-item nav-link js-scroll-trigger">
+                        <a class="nav-link" href="#" onclick="alert(ajax())">random</a>
+                    </li>
                     <li class="nav-item nav-link js-scroll-trigger">
                         <a class="btn btn-primary" role="button" type="button" href="/logout">sign out</a>
                     </li>
