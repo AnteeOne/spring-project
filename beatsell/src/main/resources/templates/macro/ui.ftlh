@@ -175,43 +175,45 @@
         body = head + bodyBefore + (pageNumber > 3 && pageNumber < totalPages - 2)?then([pageNumber], []) + bodyAfter + tail
         >
     <#else>
-        <#assign body = 1..page.getTotalPages()/>
+        <#assign body = 1..page.getTotalPages()>
     </#if>
-        <div class="mt-3" style="display: flex;justify-content: center;margin-bottom: 16px">
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li class="page-item"><a class="page-link" href="#">Pages</a></li>
-                    <#list 1..page.getTotalPages() as p>
-                        <#if (p - 1) == page.getNumber()>
-                            <li class="page-item">
-                                <a class="page-link active" href="#">${p}</a>
-                            </li>
-                        <#else>
-                            <li class="page-item">
-                                <a class="page-link" href="${url}?page=${p - 1}&size=${page}" tabindex="-1">${p}</a>
-                            </li>
-                        </#if>
-                    </#list>
-                </ul>
-            </nav>
-        </div>
-
-    <div class="mt-1" style="display: flex;justify-content: center;margin-bottom: 16px">
-        <nav aria-label="Page navigation example">
-            <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#" tabindex="-1">Elements Count</a></li>
-                <#list [1,5,10,30,50] as c>
-                    <#if c == page.getSize()>
-                        <li class="page-item">
-                            <a class="page-link active" href="#">${c}</a>
-                        </li>
-                    <#else>
-                        <li class="page-item">
-                            <a class="page-link" href="${url}?page=${page.getNumber()}&size=${c}" tabindex="-1">${c}</a>
-                        </li>
-                    </#if>
-                </#list>
-            </ul>
-        </nav>
+    <div class="mt-3">
+        <ul class="pagination">
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1">Pages</a>
+            </li>
+            <#list body as p>
+                <#if (p - 1) == page.getNumber()>
+                    <li class="page-item active">
+                        <a class="page-link" href="#" tabindex="-1">${p}</a>
+                    </li>
+                <#elseif p == -1>
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1">...</a>
+                    </li>
+                <#else>
+                    <li class="page-item">
+                        <a class="page-link" href="${url}?page=${p - 1}&size=${page.getSize()}" tabindex="-1">${p}</a>
+                    </li>
+                </#if>
+            </#list>
+        </ul>
+        <br>
+        <ul class="pagination">
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1">Size</a>
+            </li>
+            <#list [5, 10, 25, 50] as c>
+                <#if c == page.getSize()>
+                    <li class="page-item active">
+                        <a class="page-link" href="#" tabindex="-1">${c}</a>
+                    </li>
+                <#else>
+                    <li class="page-item">
+                        <a class="page-link" href="${url}?page=${page.getNumber()}&size=${c}" tabindex="-1">${c}</a>
+                    </li>
+                </#if>
+            </#list>
+        </ul>
     </div>
 </#macro>

@@ -38,7 +38,9 @@
 <div class="map-clean"></div>
 <section class="text-center content-section" id="contact">
     <h1>beats</h1>
-    <@ui.pager url page/>
+    <div style="display:flex;justify-content: center">
+        <@ui.pager url page/>
+    </div>
     <div class="container">
         <div class="row" style="padding-left: 64px;padding-right: 64px;">
             <#list page.content as beat>
