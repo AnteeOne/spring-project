@@ -35,6 +35,17 @@
     </div>
 </#macro>
 
+<#macro offer_card title description>
+    <div class="col-lg-4">
+        <div class="card mb-4 box-shadow">
+            <div class="card-body">
+                <h4 class="text-black-50 card-title mb-2">${title}</h4>
+                <h7 class="text-muted card-subtitle mb-2">${description}</h7>
+            </div>
+        </div>
+    </div>
+</#macro>
+
 <#macro favicon>
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -106,6 +117,7 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link" href="/shop">shop</a></li>
                     <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link" href="/beats">my beats</a></li>
+                    <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link" href="/offers">offers</a></li>
                     <li class="nav-item nav-link js-scroll-trigger">
                         <a class="nav-link" href="#" onclick="alert(ajax())">random</a>
                     </li>
