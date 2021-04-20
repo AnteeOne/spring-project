@@ -8,6 +8,7 @@
             <ul class="navbar-nav text-light" id="accordionSidebar">
                 <li class="nav-item"><a class="nav-link active" href="/admin"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
                 <li class="nav-item"><a class="nav-link active" href="/admin/tables"><i class="fas fa-table"></i><span>Tables</span></a></li>
+                <li class="nav-item"><a class="nav-link active" href="/admin/offers"><i class="fas fa-table"></i><span>Offers</span></a></li>
                 <li class="nav-item"></li>
                 <li class="nav-item"></li>
             </ul>

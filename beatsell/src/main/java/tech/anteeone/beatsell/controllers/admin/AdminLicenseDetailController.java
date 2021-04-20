@@ -13,6 +13,7 @@ import tech.anteeone.beatsell.models.License;
 import tech.anteeone.beatsell.services.domain.interfaces.BeatsService;
 import tech.anteeone.beatsell.services.domain.interfaces.LicensesService;
 import tech.anteeone.beatsell.utils.exceptions.LicenseNotFoundException;
+
 import static tech.anteeone.beatsell.controllers.admin.AdminControllerUtils.*;
 
 import javax.validation.Valid;
@@ -30,58 +31,54 @@ public class AdminLicenseDetailController {
     @Autowired
     Logger logger;
 
-
     @GetMapping("/admin/tables/license/{licenseid}")
-    private String getLicenseDetailPage(@PathVariable String licenseid,
-                                     Model model,
-                                     Principal principal
-    ){
+    private String getLicenseDetailPage(@PathVariable String licenseid ,
+                                        Model model ,
+                                        Principal principal
+    ) {
         try {
             License license = licensesService.getLicenseById(licenseid);
-            model.addAttribute("license",license);
-            if(license.isForProfit()) model.addAttribute("isProfit","");
-            if(license.isForMusicRecording()) model.addAttribute("isForMusicRecording","");
+            model.addAttribute("license" , license);
+            if (license.isForProfit()) model.addAttribute("isProfit" , "");
+            if (license.isForMusicRecording()) model.addAttribute("isForMusicRecording" , "");
             return "admin_license_detail";
-        }
-        catch (LicenseNotFoundException e){
-            //todo
-            logger.error("error",e);
+        } catch (LicenseNotFoundException e) {
+            logger.error("error" , e);
             return "error";
         }
     }
 
-    @PostMapping(value = "/admin/tables/license/{licenseid}",name = "save_license",params = {"savelicense"})
-    private String saveLicense(@PathVariable String licenseid,
-                            @Valid LicenseDto licenseDto,
-                            BindingResult bindingResult,
-                            Model model){
+    @PostMapping(value = "/admin/tables/license/{licenseid}", name = "save_license", params = {"savelicense"})
+    private String saveLicense(@PathVariable String licenseid ,
+                               @Valid LicenseDto licenseDto ,
+                               BindingResult bindingResult ,
+                               Model model) {
         try {
-            if(bindingResult.hasErrors()){
-                loadFormResult(model,false,"license");
+            if (bindingResult.hasErrors()) {
+                loadFormResult(model , false , "license");
                 License license = licensesService.getLicenseById(licenseid);
-                model.addAttribute("license",license);
+                model.addAttribute("license" , license);
                 return "admin_license_detail";
             }
-            loadFormResult(model,true,"license");
-            licensesService.updateLicense(licenseDto,licenseid);
-            return "redirect:/admin/tables";
-        }
-        catch (Exception e){
-            //todo
-            logger.error("error",e);
+            else {
+                loadFormResult(model , true , "license");
+                licensesService.updateLicense(licenseDto , licenseid);
+                return "redirect:/admin/tables";
+            }
+        } catch (Exception e) {
+            logger.error("error" , e);
             return "error";
         }
     }
-    @PostMapping(value = "/admin/tables/license/{licenseid}",name = "delete_license",params = {"deletelicense"})
-    private String deleteLicense(@PathVariable String licenseid){
+
+    @PostMapping(value = "/admin/tables/license/{licenseid}", name = "delete_license", params = {"deletelicense"})
+    private String deleteLicense(@PathVariable String licenseid) {
         try {
             licensesService.deleteLicenseById(licenseid);
             return "redirect:/admin/tables";
         } catch (LicenseNotFoundException e) {
-            logger.error("error",e);
-            //todo
+            logger.error("error" , e);
             return "error";
         }
     }
-
 }
