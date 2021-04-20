@@ -16,6 +16,7 @@
 
 <body id="page-top">
 <div id="wrapper">
+
     <@admin_ui.navbar/>
     <div class="d-flex flex-column" id="content-wrapper">
         <div id="content">
@@ -37,15 +38,17 @@
                                     <th>Tags</th>
                                     <th>BPM</th>
                                     <th>Booked</th>
+                                    <th>Delete</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <#list beatsList as beat>
-                                    <tr>
+                                    <tr class="active" id="beat-row-${beat.id}">
                                         <td><a href="/admin/tables/beat/${beat.id}" col>${beat.title}</a></td>
                                         <td>${beat.tags}</td>
                                         <td>${beat.bpm}</td>
                                         <td>${beat.getBookingSize()}</td>
+                                        <td><button type="button" class="btn btn-danger delete-beat" onclick="removeWithAnimation(${beat.id},'${_csrf.token}')">Delete</button></td>
                                     </tr>
                                 </#list>
                                 </tbody>
@@ -226,6 +229,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
 <script src="/assets/js/script.min.admin.js"></script>
+<script src="/assets/js/ajax_delete.js"></script>
+<script>
+    $(document).ready(function(){
+
+        $(".delete-beat").click(function(){
+            $(this).parents("tr").animate({ opacity: "hide" }, "slow");
+        });
+
+    });
+</script>
 </body>
 
 </html>
