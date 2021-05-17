@@ -32,7 +32,7 @@ public class AdminLicenseDetailController {
     Logger logger;
 
     @GetMapping("/admin/tables/license/{licenseid}")
-    private String getLicenseDetailPage(@PathVariable String licenseid ,
+    public String getLicenseDetailPage(@PathVariable String licenseid ,
                                         Model model ,
                                         Principal principal
     ) {
@@ -49,7 +49,7 @@ public class AdminLicenseDetailController {
     }
 
     @PostMapping(value = "/admin/tables/license/{licenseid}", name = "save_license", params = {"savelicense"})
-    private String saveLicense(@PathVariable String licenseid ,
+    public String saveLicense(@PathVariable String licenseid ,
                                @Valid LicenseDto licenseDto ,
                                BindingResult bindingResult ,
                                Model model) {
@@ -72,7 +72,7 @@ public class AdminLicenseDetailController {
     }
 
     @PostMapping(value = "/admin/tables/license/{licenseid}", name = "delete_license", params = {"deletelicense"})
-    private String deleteLicense(@PathVariable String licenseid) {
+    public String deleteLicense(@PathVariable String licenseid) {
         try {
             licensesService.deleteLicenseById(licenseid);
             return "redirect:/admin/tables";

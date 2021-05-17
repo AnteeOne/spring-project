@@ -58,7 +58,6 @@ public class AdminOffersController {
     @PostMapping(value = "/admin/offers/{id}",params = {"deleteoffer"})
     public String deleteOffer(@PathVariable("id") String id){
         try {
-            System.out.println("<------------------------------------>");
             offersService.deleteOfferById(id);
             return "redirect:/admin/offers";
         }

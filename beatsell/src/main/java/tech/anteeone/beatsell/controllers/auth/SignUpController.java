@@ -31,14 +31,17 @@ public class SignUpController {
     @PostMapping("/signup")
     public String signUp(@Valid UserSignUpDto dto, BindingResult bindingResult, Model model){
         if(dto.getPassword()!=null && !dto.getPassword().equals(dto.getPassword2())){
+            System.out.println("____________________________________________________________________________ 2");
             model.addAttribute("passwordMatchError","Passwords are different");
             return "signup";
         }
         if(bindingResult.hasErrors()){
+            System.out.println("____________________________________________________________________________ 1");
             model.mergeAttributes(validationUtils.getErrors(bindingResult));
             return "signup";
         }
         if (!signUpService.signUp(dto)){
+            System.out.println("____________________________________________________________________________ 0");
             model.addAttribute("usernameError","User already exists!");
             return "signup";
         }

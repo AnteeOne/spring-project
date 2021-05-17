@@ -1,6 +1,7 @@
 package tech.anteeone.beatsell.services.domain.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.ConversionService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
@@ -27,6 +28,9 @@ public class BeatsServiceImpl implements BeatsService {
 
     @Autowired
     private LicensesRepository licensesRepository;
+
+    @Autowired
+    private ConversionService conversionService;
 
     @Override
     public List<Beat> getAllBeats() throws BeatNotFoundException {

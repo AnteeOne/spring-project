@@ -11,6 +11,7 @@
 <body>
 <section class="login-dark">
     <form method="post" action="/signup"><h2 class="sr-only">Login Form</h2>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
         <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
         <div class="form-group">
             <input class="form-control ${(emailError??)?string('is-invalid','')}" type="email" name="email" placeholder="Email">

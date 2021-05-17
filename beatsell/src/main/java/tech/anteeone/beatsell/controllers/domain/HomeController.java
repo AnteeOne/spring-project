@@ -1,5 +1,6 @@
 package tech.anteeone.beatsell.controllers.domain;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,7 @@ import tech.anteeone.beatsell.services.domain.interfaces.UserService;
 import java.security.Principal;
 
 @Controller
+@Slf4j
 public class HomeController {
 
     @Autowired
@@ -27,7 +29,7 @@ public class HomeController {
 
 
     @GetMapping("/home")
-    private String getHomePage(Model model, Principal principal){
+    String getHomePage(Model model, Principal principal){
         try {
             User user = userService.findByEmail(principal.getName());
             model.addAttribute("beatsCount",beatsService.getAllBeats().size());
@@ -38,8 +40,6 @@ public class HomeController {
             logger.error("error",e);
             return "error";
         }
-
-
     }
 
 }

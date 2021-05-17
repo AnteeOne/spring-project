@@ -27,6 +27,5 @@ public class ApiController {
             logger.error("Api Error",e);
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
-
     }
 }

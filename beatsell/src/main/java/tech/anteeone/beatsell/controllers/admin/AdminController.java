@@ -37,7 +37,7 @@ public class AdminController {
     Logger logger;
 
     @GetMapping("/admin")
-    private String getAdminIndexPage(Model model) {
+    public String getAdminIndexPage(Model model) {
         try {
             model.addAttribute("bookingsCount",beatsService.getBookingsCount());
             model.addAttribute("licensesList",licensesService.getLicenses());
@@ -51,13 +51,13 @@ public class AdminController {
     }
 
     @GetMapping("/admin/profile")
-    private String getAdminProfile(Model model , Principal principal) {
+    public String getAdminProfile(Model model , Principal principal) {
         model.addAttribute("user" , principal);
         return "admin_profile";
     }
 
     @GetMapping("/admin/tables")
-    private String getAdminTablesPage(Model model , Principal principal) {
+    public String getAdminTablesPage(Model model , Principal principal) {
         model.addAttribute("user" , principal);
         try {
             saveListsInPageArgs(model,beatsService,licensesService);
@@ -71,7 +71,7 @@ public class AdminController {
     }
 
     @PostMapping(value = "/admin/tables",name = "save_beat",params = {"savebeat"})
-    private String saveBeat(@Valid BeatDto beatDto,
+    public String saveBeat(@Valid BeatDto beatDto,
                             BindingResult bindingResult,
                             Model model){
         try {
@@ -91,7 +91,7 @@ public class AdminController {
     }
 
     @PostMapping(value = "/admin/tables",name = "save_license",params = {"savelicense"})
-    private String saveLicense(@Valid LicenseDto licenseDto,
+    public String saveLicense(@Valid LicenseDto licenseDto,
                                BindingResult bindingResult,
                                Model model){
         try {

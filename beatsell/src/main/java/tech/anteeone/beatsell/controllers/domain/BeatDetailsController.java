@@ -22,7 +22,7 @@ public class BeatDetailsController {
 
 
     @GetMapping("/beats/{beatid}")
-    private String getBeatDetailPage(@PathVariable String beatid ,
+    public String getBeatDetailPage(@PathVariable String beatid ,
                                      Model model ,
                                      Principal principal
     ) {
@@ -38,7 +38,7 @@ public class BeatDetailsController {
     }
 
     @GetMapping("/beats/book/{beatid}")
-    private String bookBeat(@PathVariable String beatid ,
+    public String bookBeat(@PathVariable String beatid ,
                             Model model ,
                             Principal principal) {
 
@@ -53,7 +53,7 @@ public class BeatDetailsController {
     }
 
     @GetMapping("/beats/unbook/{beatid}")
-    private String unbookBeat(@PathVariable String beatid ,
+    public String unbookBeat(@PathVariable String beatid ,
                               Model model ,
                               Principal principal) {
         try {

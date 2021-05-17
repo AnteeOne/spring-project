@@ -21,7 +21,7 @@ public class BeatsController {
 
 
     @GetMapping("/beats")
-    private String getBeatsPage(Model model , Principal principal) {
+    public String getBeatsPage(Model model , Principal principal) {
         try {
             model.addAttribute("beatsList" , beatsService.getAllUserBookedBeats(principal.getName()));
             return "beats";

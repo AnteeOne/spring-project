@@ -22,7 +22,7 @@ public class ShopController {
 
 
     @GetMapping("/shop")
-    private String getShopPage(Model model,
+    public String getShopPage(Model model,
                                @PageableDefault(sort = {"id"},direction = Sort.Direction.DESC) Pageable pageable){
         try {
             model.addAttribute("page",beatsService.getAllPaginatedBeats(pageable));

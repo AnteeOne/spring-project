@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import tech.anteeone.beatsell.dto.BeatDto;
-import tech.anteeone.beatsell.models.Beat;
 import tech.anteeone.beatsell.services.domain.interfaces.BeatsService;
 import tech.anteeone.beatsell.services.domain.interfaces.LicensesService;
 import tech.anteeone.beatsell.utils.exceptions.BeatNotFoundException;
@@ -32,7 +31,7 @@ public class AdminBeatDetailController {
     Logger logger;
 
     @GetMapping("/admin/tables/beat/{beatid}")
-    private String getBeatDetailPage(@PathVariable String beatid,
+    public String getBeatDetailPage(@PathVariable String beatid,
                                      Model model,
                                      Principal principal
     ){
@@ -48,7 +47,7 @@ public class AdminBeatDetailController {
     }
 
     @PostMapping(value = "/admin/tables/beat/{beatid}",name = "save_beat",params = {"savebeat"})
-    private String saveBeat(@PathVariable String beatid,
+    public String saveBeat(@PathVariable String beatid,
                                @Valid BeatDto beatDto,
                                BindingResult bindingResult,
                                Model model){
@@ -64,19 +63,17 @@ public class AdminBeatDetailController {
             return "redirect:/admin/tables";
         }
         catch (Exception e){
-            //todo
             logger.error("error",e);
             return "error";
         }
     }
     @PostMapping(value = "/admin/tables/beat/{beatid}",name = "delete_beat",params = {"deletebeat"})
-    private String deleteBeat(@PathVariable String beatid){
+    public String deleteBeat(@PathVariable String beatid){
         try {
             beatsService.deleteBeatById(beatid);
             return "redirect:/admin/tables";
         } catch (BeatNotFoundException e) {
             logger.error("error",e);
-            //todo
             return "error";
         }
     }

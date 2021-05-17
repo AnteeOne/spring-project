@@ -56,7 +56,7 @@
                                 <#list beat.licenses as license>
                                     <div class="row" style="height: 30px;margin: 12px;">
                                         <div class="col" style="padding-bottom: 6px;">
-                                            <p style="color: rgb(0,0,0);">${license.trackFile}</p>
+                                            <p style="color: rgb(0,0,0);">${license.title}</p>
                                         </div>
                                         <div class="col">
                                             <p style="color: rgb(0,0,0);">${license.price}$</p>

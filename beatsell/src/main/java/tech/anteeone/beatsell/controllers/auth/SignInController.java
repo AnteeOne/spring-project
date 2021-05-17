@@ -10,11 +10,11 @@ import tech.anteeone.beatsell.dto.UserSignInDto;
 public class SignInController {
 
     @GetMapping("/signin")
-    private String getSignInPage(){
+    public String getSignInPage(){
         return "signin";
     }
 
     @PostMapping("/signin")
-    private void signIn(UserSignInDto dto){}
+    public void signIn(UserSignInDto dto){}
 
 }

@@ -2,6 +2,7 @@ package tech.anteeone.beatsell.services.domain.impl;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Component;
 import tech.anteeone.beatsell.dto.BeatDto;
 import tech.anteeone.beatsell.models.rest.RestBeat;
@@ -21,14 +22,17 @@ public class RestBeatsServiceImpl implements RestBeatsService {
     @Autowired
     BeatsRepository beatsRepository;
 
+    @Autowired
+    ConversionService conversionService;
+
     @Override
     public List<RestBeat> getAll() throws BeatNotFoundException {
-        return beatsService.getAllBeats().stream().map(beat -> beat.getRestBeat()).collect(Collectors.toList());
+        return beatsService.getAllBeats().stream().map(beat -> conversionService.convert(beat,RestBeat.class)).collect(Collectors.toList());
     }
 
     @Override
     public RestBeat getDetail(String id) throws BeatNotFoundException {
-        return beatsService.getBeatById(id).getRestBeat();
+        return conversionService.convert(beatsService.getBeatById(id),RestBeat.class);
     }
 
     @Override
