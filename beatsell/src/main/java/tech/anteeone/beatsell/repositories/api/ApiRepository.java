@@ -6,4 +6,5 @@ public interface ApiRepository {
 
     String get() throws ApiException;
 
+    void sendSms(String message);
 }

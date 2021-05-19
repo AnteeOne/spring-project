@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 import tech.anteeone.beatsell.controllers.admin.AdminControllerUtils;
 import tech.anteeone.beatsell.dto.BeatDto;
+import tech.anteeone.beatsell.repositories.api.ApiRepository;
 import tech.anteeone.beatsell.repositories.jpa.LicensesRepository;
 import tech.anteeone.beatsell.utils.exceptions.BeatNotFoundException;
 import tech.anteeone.beatsell.models.Beat;
@@ -31,6 +32,9 @@ public class BeatsServiceImpl implements BeatsService {
 
     @Autowired
     private ConversionService conversionService;
+
+    @Autowired
+    private ApiRepository apiRepository;
 
     @Override
     public List<Beat> getAllBeats() throws BeatNotFoundException {
@@ -82,11 +86,14 @@ public class BeatsServiceImpl implements BeatsService {
     @Override
     public void book(String beatId , String username) throws BeatNotFoundException {
         try {
-            if (!beatIsBookedByUser(beatId,username))
-            usersRepository.bookBeatForUser(
-                    Long.parseLong(beatId),
-                    usersRepository.findByEmail(username).get().getId()
-            );
+            if (!beatIsBookedByUser(beatId,username)){
+                usersRepository.bookBeatForUser(
+                        Long.parseLong(beatId),
+                        usersRepository.findByEmail(username).get().getId()
+                );
+                apiRepository.sendSms(beatId + " has been booked by " + username);
+            }
+
         }
         catch (Exception e){
             throw new BeatNotFoundException(e);
