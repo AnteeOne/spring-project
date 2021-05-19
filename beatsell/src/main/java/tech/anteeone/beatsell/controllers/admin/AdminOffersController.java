@@ -49,7 +49,7 @@ public class AdminOffersController {
             offersService.addOffer(offerDto);
             return "redirect:/admin/offers";
         }
-        catch (Exception e){
+        catch (OfferNotFoundException e){
             logger.error("error",e);
             return "redirect:error";
         }
@@ -61,7 +61,7 @@ public class AdminOffersController {
             offersService.deleteOfferById(id);
             return "redirect:/admin/offers";
         }
-        catch (Exception e){
+        catch (OfferNotFoundException e){
             logger.error("error",e);
             return "redirect:error";
         }

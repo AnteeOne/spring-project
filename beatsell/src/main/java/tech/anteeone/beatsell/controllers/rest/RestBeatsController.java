@@ -42,16 +42,11 @@ public class RestBeatsController {
     @ResponseBody
     public ResponseEntity<String> addBeat(@Valid @RequestBody BeatDto dto ,
                                           BindingResult bindingResult) {
-        try {
-            if (!bindingResult.hasErrors()) {
-                restBeatsService.add(dto);
-                return ResponseEntity.status(HttpStatus.ACCEPTED).build();
-            } else {
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-            }
 
-        } catch (Exception e) {
-            logger.error("error" , e);
+        if (!bindingResult.hasErrors()) {
+            restBeatsService.add(dto);
+            return ResponseEntity.status(HttpStatus.ACCEPTED).build();
+        } else {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }

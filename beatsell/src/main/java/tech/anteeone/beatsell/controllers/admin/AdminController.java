@@ -13,6 +13,8 @@ import tech.anteeone.beatsell.services.domain.interfaces.BeatsService;
 import tech.anteeone.beatsell.services.domain.interfaces.LicensesService;
 import tech.anteeone.beatsell.services.domain.interfaces.UserService;
 import tech.anteeone.beatsell.services.validation.interfaces.ValidationUtilsService;
+import tech.anteeone.beatsell.utils.exceptions.BeatNotFoundException;
+
 import static tech.anteeone.beatsell.controllers.admin.AdminControllerUtils.*;
 
 import javax.validation.Valid;
@@ -38,16 +40,10 @@ public class AdminController {
 
     @GetMapping("/admin")
     public String getAdminIndexPage(Model model) {
-        try {
-            model.addAttribute("bookingsCount",beatsService.getBookingsCount());
-            model.addAttribute("licensesList",licensesService.getLicenses());
-            return "admin_index";
-        }
-        catch (Exception e){
-            logger.error("error",e);
-            return "error";
+        model.addAttribute("bookingsCount",beatsService.getBookingsCount());
+        model.addAttribute("licensesList",licensesService.getLicenses());
+        return "admin_index";
 
-        }
     }
 
     @GetMapping("/admin/profile")
@@ -63,7 +59,7 @@ public class AdminController {
             saveListsInPageArgs(model,beatsService,licensesService);
             return "admin_tables";
         }
-        catch (Exception e){
+        catch (BeatNotFoundException e){
             logger.error("error",e);
             return "error";
 
@@ -84,7 +80,7 @@ public class AdminController {
             beatsService.saveBeat(beatDto);
             return "redirect:";
         }
-        catch (Exception e){
+        catch (BeatNotFoundException e){
             logger.error("error",e);
             return "error";
         }
@@ -104,14 +100,10 @@ public class AdminController {
             licensesService.saveLicense(licenseDto);
             return "redirect:";
         }
-        catch (Exception e){
+        catch (BeatNotFoundException e){
             logger.error("error",e);
             return "error";
         }
 
     }
-
-
-
-
 }

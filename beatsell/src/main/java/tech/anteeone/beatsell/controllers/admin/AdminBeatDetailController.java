@@ -62,7 +62,7 @@ public class AdminBeatDetailController {
             beatsService.updateBeat(beatDto,beatid);
             return "redirect:/admin/tables";
         }
-        catch (Exception e){
+        catch (BeatNotFoundException e){
             logger.error("error",e);
             return "error";
         }

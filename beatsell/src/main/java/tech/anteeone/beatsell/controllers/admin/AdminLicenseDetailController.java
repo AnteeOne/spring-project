@@ -65,7 +65,7 @@ public class AdminLicenseDetailController {
                 licensesService.updateLicense(licenseDto , licenseid);
                 return "redirect:/admin/tables";
             }
-        } catch (Exception e) {
+        } catch (LicenseNotFoundException e) {
             logger.error("error" , e);
             return "error";
         }

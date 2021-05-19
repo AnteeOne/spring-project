@@ -12,8 +12,8 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "offers")
-public class Offer {
+@Table(name = "offertypes")
+public class OfferType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,9 +22,4 @@ public class Offer {
     private String title;
 
     private String description;
-
-    @ManyToOne
-    @JoinColumn(name = "offer_type_id")
-    private OfferType offerType;
-
 }
